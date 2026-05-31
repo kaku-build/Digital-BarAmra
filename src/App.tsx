@@ -72,9 +72,6 @@ export default function App() {
   // Navigation tabs
   const [activeTab, setActiveTab] = useState<"lexicon" | "primer" | "manuscript" | "sandbox" | "quiz" | "scribe" | "database">("lexicon");
   
-  // Custom Visual Theme: Onyx (Royal Dark) vs Muga (Authentic Golden Silk Scroll)
-  const [theme, setTheme] = useState<"onyx" | "muga">("onyx");
-  
   // Dynamic Words state loaded from full-stack backend
   const [words, setWords] = useState<AhomWord[]>(barAmraDb.words);
   const [loadingWords, setLoadingWords] = useState(false);
@@ -463,26 +460,26 @@ export default function App() {
     { label: "Pandit Tengai Mohon Guide", q: "Who was Pandit Tengai Mohon, and what motivated the 1795 AD compilation of the Bar Amra?" }
   ];
 
-  // Visual Styling definitions based on selected visual theme
-  const isMuga = theme === "muga";
+  // Visual Styling definitions - Sanchipat / Muga Golden Silk light theme active exclusively
+  const isMuga = true;
   
   // Theme styling configurations
   const themeClasses = {
-    bg: isMuga ? "bg-[#FAF7ED] text-[#332415]" : "bg-[#07090c] text-[#f4efe0]",
-    header: isMuga ? "bg-gradient-to-b from-[#F2E8CE] to-[#FAF7ED] border-[#E2D5B5]" : "bg-gradient-to-b from-[#111419] to-[#07090c] border-[#1f2735]",
-    title: isMuga ? "text-[#2B1B0C]" : "text-white",
-    card: isMuga ? "bg-white border-[#E4D7B8] shadow-sm shadow-[#DFD6BD]/50 text-[#3d2a17]" : "bg-[#0e121a] border-gold-900/10 hover:border-gold-500/30",
-    badgeLabel: isMuga ? "text-[#A04000]" : "text-[#7d8b9e]",
-    subtext: isMuga ? "text-[#695540]" : "text-[#b0bbcb]",
-    badgeSec: isMuga ? "bg-[#332415]/5 border-[#332415]/15 text-[#332415]" : "bg-[#181d26] text-slate-500 border-gold-950/20",
-    highlightText: isMuga ? "text-[#BF1A1A] font-bold" : "text-gold-450",
+    bg: "bg-[#FAF7ED] text-[#332415]",
+    header: "bg-gradient-to-b from-[#F2E8CE] to-[#FAF7ED] border-[#E2D5B5]",
+    title: "text-[#2B1B0C]",
+    card: "bg-white border-[#E4D7B8] shadow-sm shadow-[#DFD6BD]/50 text-[#3d2a17]",
+    badgeLabel: "text-[#A04000]",
+    subtext: "text-[#695540]",
+    badgeSec: "bg-[#332415]/5 border-[#332415]/15 text-[#332415]",
+    highlightText: "text-[#BF1A1A] font-bold",
     tabActive: "bg-gold-500 text-gold-950 shadow-md",
-    tabInactive: isMuga ? "text-[#58483B] hover:text-[#2d1f14] hover:bg-[#FAF4DF]" : "text-[#a2afc0] hover:text-white hover:bg-[#1f2634]",
-    inputBg: isMuga ? "bg-[#FCFCFA] border-[#DCD3B5] text-[#3d2916]" : "bg-[#080a0c] border-gold-950/75 text-gold-100",
-    sidebarCard: isMuga ? "bg-[#FFFDF4] border-[#E3D6B2]" : "bg-[#0b0e14] border-[#1e2634]/60",
+    tabInactive: "text-[#58483B] hover:text-[#2d1f14] hover:bg-[#FAF4DF]",
+    inputBg: "bg-[#FCFCFA] border-[#DCD3B5] text-[#3d2916]",
+    sidebarCard: "bg-[#FFFDF4] border-[#E3D6B2]",
     buttonAccent: "bg-[#801313] hover:bg-[#610d0d] text-[#FAF5E6]",
-    timelineCard: isMuga ? "bg-[#F7F2DE] border-[#E0D4B2]" : "bg-[#090b10] border-gold-950/40",
-    citation: isMuga ? "bg-[#F9ECE7] border-[#801313] text-[#4d1010]" : "bg-[#0b0e15] border-l-2 border-gold-500 text-[#a4b2c1]"
+    timelineCard: "bg-[#F7F2DE] border-[#E0D4B2]",
+    citation: "bg-[#F9ECE7] border-[#801313] text-[#4d1010]"
   };
 
   return (
@@ -495,9 +492,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 shadow-2xl flex items-center font-medium gap-2 font-space text-sm px-5 py-3.5 rounded-lg border ${
-              isMuga ? "bg-[#801313] border-[#a04000] text-white" : "bg-gold-500 border border-gold-300 text-gold-950"
-            }`}
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-50 shadow-2xl flex items-center font-medium gap-2 font-space text-sm px-5 py-3.5 rounded-lg border bg-[#801313] border-[#a04000] text-white"
           >
             <Sparkles className="h-4 w-4 animate-spin text-amber-300 animate-pulse" />
             <span>{toastMessage}</span>
@@ -512,9 +507,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className={`text-[10px] tracking-[0.25em] font-mono border px-2.5 py-1 rounded-md ${
-                isMuga ? "bg-[#FAF1D6] border-[#D0BA82] text-[#806B32] font-semibold" : "bg-gold-950/40 border border-gold-800/50 text-gold-450"
-              }`}>
+              <span className="text-[10px] tracking-[0.25em] font-mono border px-2.5 py-1 rounded-md bg-[#FAF1D6] border-[#D0BA82] text-[#806B32] font-semibold">
                 1795 AD TAI LANGUAGE MANUSCRIPT
               </span>
               <span className="text-xs tracking-wider font-space text-slate-500 flex items-center gap-1">
@@ -525,9 +518,7 @@ export default function App() {
             <h1 className={`text-3xl md:text-5xl font-serif font-extrabold tracking-tight ${themeClasses.title} flex flex-wrap items-baseline gap-2 md:gap-3`}>
               <span>বৰ অম্ৰ</span> 
               <span className="text-gold-500 font-light text-2xl md:text-3.5xl">Bar Amra Codex</span>
-              <span className={`text-xs px-2.5 py-1 rounded border font-space font-semibold uppercase tracking-wider ${
-                isMuga ? "bg-[#801313]/10 border-[#801313]/25 text-[#801313]" : "bg-gold-500/10 border border-gold-500/20 text-gold-400"
-              }`}>
+              <span className="text-xs px-2.5 py-1 rounded border font-space font-semibold uppercase tracking-wider bg-[#801313]/10 border-[#801313]/25 text-[#801313]">
                 Tai-Ahom (তাই ভাষা)
               </span>
             </h1>
@@ -538,24 +529,6 @@ export default function App() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-            {/* Real-time Theme selector */}
-            <div className="flex items-center bg-slate-950/10 border border-amber-900/10 p-1.5 rounded-full shadow-inner">
-              <button 
-                title="Deep Midnight Theme"
-                onClick={() => { setTheme("onyx"); triggerToast("Onyx Dynasty dark layout active."); }}
-                className={`p-1.5 rounded-full transition-all duration-300 ${!isMuga ? "bg-slate-950 text-gold-400" : "text-[#756250]"}`}
-              >
-                <Moon className="h-4 w-4" />
-              </button>
-              <button 
-                title="Muga Golden Silk Scroll"
-                onClick={() => { setTheme("muga"); triggerToast("Muga Silk Royal ledger theme active."); }}
-                className={`p-1.5 rounded-full transition-all duration-300 ${isMuga ? "bg-[#FAF5E2] text-[#801313] shadow-sm" : "text-slate-500"}`}
-              >
-                <Sun className="h-4 w-4" />
-              </button>
-            </div>
-
             {/* Quick action triggers */}
             <button
               onClick={() => setIsContributeOpen(true)}
@@ -565,15 +538,11 @@ export default function App() {
             </button>
 
             <button
-              onClick={() => {
-                setIsManuscriptExportOpen(true);
-                triggerToast("1795 Bark Manuscript Exporter initiated.");
-              }}
-              className={`text-xs font-mono font-bold px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 transition-colors duration-300 border ${
-                isMuga 
-                  ? "bg-[#801313]/10 border-[#801313]/30 text-[#801313] hover:bg-[#801313]/20" 
-                  : "bg-gold-500/10 border-gold-500/30 text-gold-450 hover:bg-gold-500/20"
-              }`}
+               onClick={() => {
+                 setIsManuscriptExportOpen(true);
+                 triggerToast("1795 Bark Manuscript Exporter initiated.");
+               }}
+               className="text-xs font-mono font-bold px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 transition-colors duration-300 border bg-[#801313]/10 border-[#801313]/30 text-[#801313] hover:bg-[#801313]/20"
             >
               <Download className="h-4 w-4" /> Export Manuscript
             </button>
@@ -581,9 +550,7 @@ export default function App() {
             <button
               title="Reset Database Defaults"
               onClick={handleResetCodex}
-              className={`p-2.5 rounded-lg border transition-colors duration-300 ${
-                isMuga ? "bg-white text-[#801313] border-[#E0D4B2] hover:bg-[#FAF4DF]" : "bg-[#121620] text-slate-400 border-gold-950/50 hover:text-white"
-              }`}
+              className="p-2.5 rounded-lg border transition-colors duration-300 bg-white text-[#801313] border-[#E0D4B2] hover:bg-[#FAF4DF]"
             >
               <RotateCcw className="h-4 w-4" />
             </button>
@@ -1949,9 +1916,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Footer */}
-      <footer className={`border-t py-6 px-4 text-center text-xs font-space mt-12 transition-colors duration-500 ${
-        isMuga ? "border-[#E4D7B8] bg-[#F2EBCE]/55 text-[#5c412a]" : "border-gold-900/20 bg-[#0a0d13] text-[#627181]"
-      }`}>
+      <footer className="border-t py-6 px-4 text-center text-xs font-space mt-12 border-[#E4D7B8] bg-[#F2EBCE]/55 text-[#5c412a]">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex flex-col sm:items-start text-center sm:text-left gap-1">
             <span>Digitally Restored &amp; Maintained by <strong className="text-gold-500">[ Kaku Dihingia Mohan/ বৰ অম্ৰ (BarAmra) Codex ]</strong></span>
@@ -1973,7 +1938,7 @@ export default function App() {
         isOpen={isManuscriptExportOpen}
         onClose={() => setIsManuscriptExportOpen(false)}
         words={words}
-        activeTheme={theme}
+        activeTheme="muga"
       />
 
     </div>

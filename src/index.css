@@ -20,8 +20,8 @@
 }
 
 body {
-  background-color: #0b0d10;
-  color: #f3edd0;
+  background-color: #FAF7ED;
+  color: #332415;
   font-family: var(--font-sans);
 }
 
@@ -31,12 +31,12 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0f13;
+  background: #FAF7ED;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2b1f0c;
+  background: #c9b78a;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b48522;
+  background: #936518;
 }
