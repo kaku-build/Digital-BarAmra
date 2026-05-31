@@ -1,0 +1,6 @@
+{
+  "name": "Digital Bar Amra",
+  "description": "A digital interactive portal for the historic 1795 Bar Amra Tai-Ahom dictionary by Pandit Tengai Mohon.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
